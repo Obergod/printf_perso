@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ut.c                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 16:41:20 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/18 15:55:42 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/08 11:49:59 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/12 15:53:08 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_printchar(char c)
+static int	ft_isspace(const char c)
 {
-	write (1, &c, 1);
-	return (1);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }
 
-int	ft_printstr(char *s)
+int	ft_atoi(const char *nptr)
 {
 	int	i;
+	int	res;
+	int	neg;
 
 	i = 0;
-	if (!s)
-		return (ft_printstr("(null)"));
-	while (*s)
+	neg = 1;
+	res = 0;
+	while (ft_isspace(nptr[i]) == 1)
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		i += ft_printchar(*s);
-		s++;
+		if (nptr[i] == '-')
+			neg = -neg;
+		i++;
 	}
-	return (i);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = res * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (res * neg);
 }

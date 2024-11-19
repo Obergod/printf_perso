@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 19:33:29 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/18 19:38:02 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/06 18:17:21 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/14 14:27:32 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
+#include "libft.h"
 #include <stdio.h>
-#include <unistd.h>
 
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	len;
 
-int	ft_printf(const char *str, ...);
-int	ft_printnbr_base(size_t nbr, char c);
-int	ft_printchar(char c);
-int	ft_printstr(char *s);
-int	ft_printnbs(int nb);
-int	ft_printunsigned(unsigned int n);
-int	ft_printptr(size_t n);
-
-
-#endif
+	len = ft_strlen(src);
+	i = 0;
+	if (size == 0)
+		return (len);
+	while ((size_t)i < size - 1 && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (len);
+}

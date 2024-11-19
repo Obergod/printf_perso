@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 19:33:29 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/18 19:38:02 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/11 15:10:30 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/14 17:37:01 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdio.h>
-#include <unistd.h>
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*stock;
 
-
-int	ft_printf(const char *str, ...);
-int	ft_printnbr_base(size_t nbr, char c);
-int	ft_printchar(char c);
-int	ft_printstr(char *s);
-int	ft_printnbs(int nb);
-int	ft_printunsigned(unsigned int n);
-int	ft_printptr(size_t n);
-
-
-#endif
+	stock = (void *)malloc(sizeof(t_list));
+	if (!stock)
+		return (NULL);
+	stock->content = content;
+	stock->next = NULL;
+	return (stock);
+}
+/*
+int	main()
+{
+	printf("%s\n",(char *) ft_lstnew("teeeessst")->content);
+}*/

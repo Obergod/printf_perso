@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 19:33:29 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/18 19:38:02 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/11 13:18:28 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/14 15:06:13 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdio.h>
-#include <unistd.h>
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*res;
+	int		i;
 
-
-int	ft_printf(const char *str, ...);
-int	ft_printnbr_base(size_t nbr, char c);
-int	ft_printchar(char c);
-int	ft_printstr(char *s);
-int	ft_printnbs(int nb);
-int	ft_printunsigned(unsigned int n);
-int	ft_printptr(size_t n);
-
-
-#endif
+	i = 0;
+	res = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!res)
+		return (NULL);
+	while (s[i])
+	{
+		res[i] = f(i, s[i]);
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
+}

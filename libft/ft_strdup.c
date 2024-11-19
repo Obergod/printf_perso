@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 19:33:29 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/18 19:38:02 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/08 11:50:32 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/14 19:19:18 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
+#include <stdlib.h>
 
-#include <stdio.h>
-#include <unistd.h>
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*dst;
+	size_t	len;
 
-
-int	ft_printf(const char *str, ...);
-int	ft_printnbr_base(size_t nbr, char c);
-int	ft_printchar(char c);
-int	ft_printstr(char *s);
-int	ft_printnbs(int nb);
-int	ft_printunsigned(unsigned int n);
-int	ft_printptr(size_t n);
-
-
-#endif
+	i = 0;
+	len = ft_strlen(s);
+	dst = malloc(sizeof(char) * len + 1);
+	if (!dst)
+		return (NULL);
+	while (s[i])
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}

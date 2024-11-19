@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 19:33:29 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/18 19:38:02 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/11 18:49:26 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/14 19:18:12 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdio.h>
-#include <unistd.h>
+char	*ft_strchr(const char *s, int c)
+{
+	char	*stock;
 
-
-int	ft_printf(const char *str, ...);
-int	ft_printnbr_base(size_t nbr, char c);
-int	ft_printchar(char c);
-int	ft_printstr(char *s);
-int	ft_printnbs(int nb);
-int	ft_printunsigned(unsigned int n);
-int	ft_printptr(size_t n);
-
-
-#endif
+	if ((unsigned char)c == '\0')
+	{
+		stock = (char *)s + ft_strlen(s);
+		return (stock);
+	}
+	while (*s)
+	{
+		if (*s == (unsigned char)c)
+		{
+			stock = (char *)s;
+			return (stock);
+		}
+		s++;
+	}
+	return (NULL);
+}

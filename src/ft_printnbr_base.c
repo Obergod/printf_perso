@@ -12,61 +12,36 @@
 
 #include "ft_printf.h"
 
-static long	ft_abs(long n)
+void	ft_putchar(char c)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
+	write (1, &c, 1);
 }
 
-int	a_lenbase(int nb)
+int	ft_printnbr_base(size_t n, char c)
 {
-	int	count;
-	long	n;
-
-	n = nb;
-	count = 0;
-	if (n <= 0)
-		count++;
-	n = ft_abs(n);
-	while (n >= 16)
-	{
-		count++;
-		n /= 16;
-	}
-	return (count + 1);
-}
-
-void	ft_putnbr_base(int nbr, char c)
-{
-	long		n;
 	char		*low_base;
 	char		*up_base;
+	int			len;
 
 	low_base = "0123456789abcdef";
 	up_base = "0123456789ABCDEF";
-	n = nbr;
+	len = 0;
 	if (n < 0)
 	{
-		ft_putchar('-');
+		ft_printchar('-');
 		n = -n;
+		len++;
 	}
 	if (n >= 16)
-		ft_putnbr_base(n / 16, c);
+		len += ft_printnbr_base(n / 16, c);
 	if (c == 'x')
-		ft_putchar(low_base[n % 16]);
+		ft_printchar(low_base[n % 16]);
 	if (c == 'X')
-		ft_putchar(up_base[n % 16]);
-}
-
-int	ft_printnbr_base(int nbr, char c)
-{
-	int	len;
-
-	len = a_lenbase(nbr);
-	ft_putnbr_base(nbr, c);
+		ft_printchar(up_base[n % 16]);
+	len++;
 	return (len);
 }
+
 /*
 #include <stdio.h>
 

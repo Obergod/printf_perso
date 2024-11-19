@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 19:33:29 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/17 20:46:53 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/06 17:43:18 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/11 14:03:39 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdio.h>
-#include <unistd.h>
-
-
-int	ft_printf(const char *str, ...);
-int	ft_printnbr_base(int nbr, char c);
-int	ft_printchar(char c);
-void	ft_putchar(char c);
-int	ft_printstr(char *s);
-int	ft_printnbs(int nb);
-int	ft_printunsigned(unsigned int n);
-int	ft_printptr(unsigned long long n);
-
-
-#endif
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
+		return (1);
+	return (0);
+}

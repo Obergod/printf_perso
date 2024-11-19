@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 19:33:29 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/18 19:38:02 by mafioron         ###   ########.fr       */
+/*   Created: 2024/11/06 18:53:38 by mafioron          #+#    #+#             */
+/*   Updated: 2024/11/06 18:54:44 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
+#include "libft.h"
 #include <stdio.h>
-#include <unistd.h>
 
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
+	int		i;
+	int		j;
+	size_t	len;
 
-int	ft_printf(const char *str, ...);
-int	ft_printnbr_base(size_t nbr, char c);
-int	ft_printchar(char c);
-int	ft_printstr(char *s);
-int	ft_printnbs(int nb);
-int	ft_printunsigned(unsigned int n);
-int	ft_printptr(size_t n);
-
-
-#endif
+	len = ft_strlen(dest);
+	i = 0;
+	j = len;
+	if (len >= size)
+		return (ft_strlen(src) + size);
+	while (src[i] && (size_t)i < (size - len - 1))
+	{
+		dest[j + i] = src[i];
+		i++;
+	}
+	dest[j + i] = '\0';
+	return (ft_strlen(src) + len);
+}
