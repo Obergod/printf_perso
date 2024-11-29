@@ -13,9 +13,8 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdio.h>
-#include <unistd.h>
-
+# include <stdio.h>
+# include <unistd.h>
 
 int	ft_printf(const char *str, ...);
 int	ft_printnbr_base(size_t nbr, char c);
@@ -24,6 +23,5 @@ int	ft_printstr(char *s);
 int	ft_printnbs(int nb);
 int	ft_printunsigned(unsigned int n);
 int	ft_printptr(size_t n);
-
 
 #endif

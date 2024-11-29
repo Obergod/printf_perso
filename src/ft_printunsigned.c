@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 
-
 int	ft_printunsigned(unsigned int n)
 {
 	int	len;
@@ -24,4 +23,3 @@ int	ft_printunsigned(unsigned int n)
 	len++;
 	return (len);
 }
-

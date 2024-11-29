@@ -14,8 +14,7 @@
 
 int	ft_printchar(char c)
 {
-	write (1, &c, 1);
-	return (1);
+	return (write (1, &c, 1));
 }
 
 int	ft_printstr(char *s)

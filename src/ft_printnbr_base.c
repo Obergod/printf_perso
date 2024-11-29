@@ -12,11 +12,6 @@
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
-{
-	write (1, &c, 1);
-}
-
 int	ft_printnbr_base(size_t n, char c)
 {
 	char		*low_base;
@@ -26,12 +21,6 @@ int	ft_printnbr_base(size_t n, char c)
 	low_base = "0123456789abcdef";
 	up_base = "0123456789ABCDEF";
 	len = 0;
-	if (n < 0)
-	{
-		ft_printchar('-');
-		n = -n;
-		len++;
-	}
 	if (n >= 16)
 		len += ft_printnbr_base(n / 16, c);
 	if (c == 'x')

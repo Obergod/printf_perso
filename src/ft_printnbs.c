@@ -12,12 +12,10 @@
 
 #include "ft_printf.h"
 
-
-
 int	ft_printnbs(int nb)
 {
 	long	n;
-	int	len;
+	int		len;
 
 	len = 0;
 	n = nb;

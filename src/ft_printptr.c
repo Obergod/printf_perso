@@ -16,7 +16,7 @@
 int	ft_putptr(size_t n)
 {
 	char		*low_base;
-	int	len;
+	int			len;
 
 	len = 0;
 	low_base = "0123456789abcdef";
@@ -33,9 +33,7 @@ int	ft_printptr(size_t n)
 
 	len = 0;
 	if (!n)
-	{
-		return(ft_printstr("(nil)"));
-	}
+		return (ft_printstr("(nil)"));
 	len += ft_printstr("0x");
 	len += ft_putptr(n);
 	return (len);

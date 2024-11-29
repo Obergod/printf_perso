@@ -23,9 +23,9 @@ int	print_cases(va_list vl, char c)
 	else if (c == 's')
 		put_len = ft_printstr(va_arg(vl, char *));
 	else if (c == 'p')
-		put_len += ft_printptr(va_arg(vl, size_t));
+		put_len = ft_printptr(va_arg(vl, size_t));
 	else if (c == 'd' || c == 'i')
-		put_len += ft_printnbs(va_arg(vl, int));
+		put_len = ft_printnbs(va_arg(vl, int));
 	else if (c == 'u')
 		put_len = ft_printunsigned(va_arg(vl, unsigned int));
 	else if (c == 'x' || c == 'X')
@@ -44,7 +44,7 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	vl;
 	char	*s;
-	int	put_len;
+	int		put_len;
 
 	put_len = 0;
 	s = (char *)str;
@@ -77,9 +77,11 @@ int	main()
 	int	hex = 4234;
 	void	*n = NULL;
 
-	printf("moi ; %d\n", ft_printf("%X\n", -42));
-	printf("printf : %d\n", printf("%X\n", -42));
+//	printf("moi ; %d\n", ft_printf("%X\n", -42));
+//	printf("printf : %d\n", printf("%X\n", -42));
 
-	// printf("\nTaille TOI:%d\n\n",ft_printf("char %c, str %s, ptr %p\n int, %d : %i, unsigned %u, hex %x %% %w\n", c, s, u, i, i, u, hex));
-	// printf("\nTaille PRINTF:%d\n\n,",printf("char %c, str %s, ptr %p\n int, %d : %i, unsigned %u, hex %x %% %w\n", c, s, u, i, i, u, hex));
+	 printf("\nTaille TOI:%d\n\n",ft_printf("char %c, str %s,
+	 ptr %p\n int, %d : %i, unsigned %u, hex %x %% %w\n", c, s, u, i, i, u, hex));
+	 printf("\nTaille PRINTF:%d\n\n,",printf("char %c, str %s,
+	 ptr %p\n int, %d : %i, unsigned %u, hex %x %% %w\n", c, s, u, i, i, u, hex));
 }*/
